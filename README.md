@@ -1,7 +1,8 @@
 # Spotify OBS Widget 
 ## A simple Now Playing Widget for the Browser Object in OBS
 
-### Setup
+### Setup or test the demo [here](https://spotifyobswidget.onrender.com)
+
 
 #### Install the packages from package.json:
 ```
@@ -26,4 +27,4 @@ or alternatively run
 npm run start
 ```
 
-Check out the demo [here](https://spotifyobswidget.onrender.com)
+
