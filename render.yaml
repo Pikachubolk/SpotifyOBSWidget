@@ -1,20 +1,21 @@
-name: Spotify OBS Widget
-on:
-  push:
-    branches:
-      - main
+# render.yaml
 
-jobs:
-  build:
-    environment:
-      variables:
-        SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
-        SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
-        SPOTIFY_REDIRECT_URI: ${SPOTIFY_REDIRECT_URI}
-        PORT: ${PORT}
-    image: node:18
-    steps:
-      - run: npm install
-      - run: node server.js
-    deploy:
-      free: true
+services:
+  - type: web
+    name: Spotify OBS Widget
+    repo: https://github.com/Pikachubolk/SpotifyOBSWidget # Your GitHub repository
+    branch: main # Branch to deploy from
+    plan: free # Free plan
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: SPOTIFY_CLIENT_ID
+        sync: false
+      - key: SPOTIFY_CLIENT_SECRET
+        sync: false
+      - key: SPOTIFY_REDIRECT_URI
+        sync: false
+      - key: PORT
+        value: '4000'
+    autoDeploy: true # Automatically deploy changes from the specified branch
