@@ -1,5 +1,6 @@
 const SpotifyWebApi = require('spotify-web-api-node');
-const sessions = {};
+const fs = require('fs-extra');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -8,6 +9,22 @@ const spotifyApi = new SpotifyWebApi({
     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
     redirectUri: process.env.SPOTIFY_REDIRECT_URI
 });
+
+const sessionFilePath = path.join(__dirname, 'sessions.json');
+
+function loadSessions() {
+    if (fs.existsSync(sessionFilePath)) {
+        return fs.readJsonSync(sessionFilePath);
+    } else {
+        return {};
+    }
+}
+
+function saveSessions(sessions) {
+    fs.writeJsonSync(sessionFilePath, sessions);
+}
+
+const sessions = loadSessions();
 
 exports.getAuthUrl = () => {
     const scopes = ['user-read-playback-state'];
@@ -19,6 +36,7 @@ exports.handleCallback = async (code) => {
     const accessToken = data.body['access_token'];
     const sessionId = generateSessionId();
     sessions[sessionId] = accessToken;
+    saveSessions(sessions);
     return sessionId;
 };
 
