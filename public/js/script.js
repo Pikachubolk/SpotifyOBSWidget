@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.error) {
                     trackNameElement.innerText = 'Error: ' + data.error;
                     document.getElementById('artist-name').innerText = '';
-                    document.getElementById('album-art').src = 'default-album-art.png'; // Path to a default image
+                    document.getElementById('album-art').src = '../images/default-album-art.png'; // Path to a default image
                 } else {
                     trackNameElement.innerText = data.track_name;
                     document.getElementById('artist-name').innerText = data.artist_name;
