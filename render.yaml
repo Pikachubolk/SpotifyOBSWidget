@@ -1,0 +1,20 @@
+name: Spotify OBS Widget
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    environment:
+      variables:
+        SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
+        SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
+        SPOTIFY_REDIRECT_URI: ${SPOTIFY_REDIRECT_URI}
+        PORT: ${PORT}
+    image: node:18
+    steps:
+      - run: npm install
+      - run: node server.js
+    deploy:
+      free: true
