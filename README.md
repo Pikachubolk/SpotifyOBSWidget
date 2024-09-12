@@ -10,7 +10,7 @@ npm install
 ```
 
 #### Configure the .env file and add the following (You can also use Virtual environment secrets)
-Example env below:
+Example of the env below:
 ```
 SPOTIFY_CLIENT_ID=your-spotify-client-id
 SPOTIFY_CLIENT_SECRET=your-spotify-client-secret
