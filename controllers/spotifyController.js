@@ -21,6 +21,7 @@ exports.getNowPlaying = async (req, res) => {
         res.json({
             track_name: nowPlaying.track_name,
             artist_name: nowPlaying.artist_name,
+            album_name: nowPlaying.album_name,
             album_art: nowPlaying.album_art,
             obs_link: nowPlaying.obs_link
         });

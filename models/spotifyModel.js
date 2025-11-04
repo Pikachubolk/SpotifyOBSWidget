@@ -49,6 +49,7 @@ exports.getNowPlaying = async (sessionId) => {
             return {
                 track_name: track.name,
                 artist_name: track.artists[0].name,
+                album_name: track.album.name,
                 album_art: track.album.images[0].url, // Assuming the first image is the desired size
                 obs_link: `obs://now-playing-link/${track.id}`
             };
